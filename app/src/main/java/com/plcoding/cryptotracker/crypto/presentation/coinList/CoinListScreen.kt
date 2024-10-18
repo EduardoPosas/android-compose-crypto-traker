@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.plcoding.cryptotracker.crypto.presentation.coinList.components.CoinListItem
-import com.plcoding.cryptotracker.crypto.presentation.coinList.components.CoinListState
 import com.plcoding.cryptotracker.crypto.presentation.coinList.components.coin
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 

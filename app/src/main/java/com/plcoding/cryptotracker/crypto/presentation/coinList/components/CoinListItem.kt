@@ -90,7 +90,7 @@ private fun CoinListItemPrev() {
     }
 }
 
-val coin = Coin(
+internal val coin = Coin(
     id = "bitcoin",
     name = "Bitcoin",
     rank = 1,

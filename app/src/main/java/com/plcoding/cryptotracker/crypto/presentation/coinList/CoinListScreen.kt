@@ -20,7 +20,8 @@ import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 @Composable
 fun CoinListScreen(
     state: CoinListState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onShowDetailScreen: (CoinListAction) -> Unit = {}
 ) {
     if (state.isLoading) {
         Box(
@@ -37,7 +38,7 @@ fun CoinListScreen(
         items(items = state.coins, key = { it.id }) { coinUi ->
             CoinListItem(
                 coinUi = coinUi,
-                onClickItem = { /*TODO*/ },
+                onClickItem = { onShowDetailScreen(CoinListAction.CoinItemClicked(coinUi)) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.background)

@@ -19,7 +19,7 @@ fun CoinDto.toCoin() = Coin(
 
 fun CoinPriceDto.toCoinPrice() = CoinPrice(
     priceUsd = priceUsd,
-    time = Instant
+    dateTime = Instant
         .ofEpochMilli(time)
         .atZone(ZoneId.systemDefault())
 )

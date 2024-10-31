@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
@@ -110,7 +109,11 @@ fun LineChart(
         val maxXLabelWidth = xLabelTextLayoutResults.maxOfOrNull { it.size.width } ?: 0
         val maxXLabelHeight = xLabelTextLayoutResults.maxOfOrNull { it.size.height } ?: 0
         val maxLabelLineCount = xLabelTextLayoutResults.maxOfOrNull { it.lineCount } ?: 0
-        val xLabelLineHeight = maxXLabelHeight / maxLabelLineCount
+        val xLabelLineHeight = if (maxLabelLineCount != 0) {
+            maxXLabelHeight / maxLabelLineCount
+        } else {
+            0
+        }
 
         // ViewPort Height
         val viewPortHeightPx =
@@ -140,14 +143,14 @@ fun LineChart(
         val viewPortRightX = size.width
         val viewPortBottomY = viewPortTopY + viewPortHeightPx
         val viewPortLeftX = 2 * horizontalPaddingPx + maxYLabelWidth
-        drawRect(
-            topLeft = Offset(
-                x = viewPortLeftX,
-                y = viewPortTopY
-            ),
-            size = Size(width = viewPortRightX, height = viewPortHeightPx),
-            color = Color.Green.copy(alpha = 0.3f)
-        )
+//        drawRect(
+//            topLeft = Offset(
+//                x = viewPortLeftX,
+//                y = viewPortTopY
+//            ),
+//            size = Size(width = viewPortRightX, height = viewPortHeightPx),
+//            color = Color.Green.copy(alpha = 0.3f)
+//        )
 
         xLabelWidth = maxXLabelWidth + xAxisLabelSpacing
         xLabelTextLayoutResults.forEachIndexed { index, result ->
@@ -219,7 +222,7 @@ fun LineChart(
                     x = x,
                     y = y
                 ),
-                color = if (index == selectedDatePointIndex) style.selectedColor else style.unselectedColor
+                color = style.unselectedColor
             )
             if (showHelperLines) {
                 drawLine(

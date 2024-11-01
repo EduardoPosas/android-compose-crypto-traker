@@ -44,6 +44,11 @@ class CoinListViewModel(
             is CoinListAction.CoinItemClicked -> {
                 selectCoin(action.coinUi)
             }
+
+            CoinListAction.CoinListRefreshing -> {
+                _state.update { it.copy(isRefreshing = true) }
+                loadCoins()
+            }
         }
     }
 
@@ -97,6 +102,8 @@ class CoinListViewModel(
                     }
                     _events.send(CoinListEvent.Error(error = networkError))
                 }
+            _state.update { it.copy(isRefreshing = false) }
+//            _state.emit(_state.value.copy(isRefreshing = false))
         }
     }
 }

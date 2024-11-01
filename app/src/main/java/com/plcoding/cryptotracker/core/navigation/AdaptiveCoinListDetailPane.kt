@@ -48,6 +48,7 @@ fun AdaptiveCoinListDetailPane(
         listPane = {
             CoinListScreen(
                 state = state,
+                isRefreshing = state.isRefreshing,
                 onShowDetailScreen = { action ->
                     coinListViewModel.onAction(action)
                     when (action) {
@@ -56,7 +57,12 @@ fun AdaptiveCoinListDetailPane(
                                 pane = ListDetailPaneScaffoldRole.Detail
                             )
                         }
+
+                        CoinListAction.CoinListRefreshing -> {}
                     }
+                },
+                onRefresh = {
+                    coinListViewModel.onAction(CoinListAction.CoinListRefreshing)
                 }
             )
         },

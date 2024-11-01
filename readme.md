@@ -51,12 +51,12 @@ The list pane shows a list of crypto coins with some data, as shown below:
 The detail pane shows the details of the coin in a `FlowRow` and a history coin price change in a
 line path graph created using Canvas API.
 
-<img alt="Coin detail screen" src="media/coin-detail-screen.png" width="750"/>
+<img alt="Coin detail screen" src="media/coin-detail-screen.png" width="250"/>
 
 As we are using `NavigableListDetailPaneScaffold` it is possible to show both screens when there are
 enough space available.
 
-<img alt="Adaptive pane" src="media/adaptive-pane.png" width="250"/>
+<img alt="Adaptive pane" src="media/adaptive-pane.png" width="750"/>
 
 It is implemented a pull to refresh action to get the latest coins list and coin price change
 history.
